@@ -1,0 +1,31 @@
+よく使う
+console.log(...any)						通常出力
+console.log(string, ...style)			たぶん文字列限定だが、1つ目の引数に%cを含めるとそれ以降の文字列が2つ目以降の引数のスタイルが付与される、%cが付くたびに次のstyle引数が適用されるが、style引数の指定が無ければ%cは文字列として出力される
+console.count(...string)				ここが呼び出された回数が出力される
+console.trace(...any)					この関数が呼び出されたときのスタックトレースが見れる
+console.table(object, array[string])	オブジェクトをテーブルレイアウトで表示されるが、本来はいろんな形式の引数に対応しているはずだが、Chrome60.0.3112.90では1つ目の引数はオブジェクトの配列である必要がある、2つ目の引数は表示させるキーの指定
+console.assert(boolean, any)			第一引数がfalseの場合のみ第二引数の内容を出力
+performance.now()						これの2回目の実行結果から1回目の実行結果を引いた値が処理時間となる
+
+あんまり使わない
+console.error			エラー出力
+console.info			インフォ出力
+console.warn			警告出力
+console.dir				エレメントの構造出力だが、console.logとの違いが不明
+console.dirxml			xml形式での出力
+console.time			分解能が低いのでperformance.nowを利用した方が良い
+console.timeEnd			分解能が低いのでperformance.nowを利用した方が良い
+console.group			console.groupEndを実行時に今までの内容が表示される、console.groupCollapsedとの違いは最初に開いた状態か閉じた状態か
+console.groupCollapsed	console.groupEndを実行時に今までの内容が表示される、console.groupとの違いは最初に開いた状態か閉じた状態か
+console.groupEnd		console.group、console.groupCollapsedの内容を表示する
+performance.mark		performance.measureと組み合わせて使うことで開発ツール上で視覚的に動作にかかった時間がわかるが、視覚的には見れないが、performance.nowの方が使い勝手が良い
+performance.measure		performance.markと組み合わせて使うことで開発ツール上で視覚的に動作にかかった時間がわかるが、視覚的には見れないが、performance.nowの方が使い勝手が良い
+
+非推奨
+console.debug	非推奨扱いでこれを使うならconsole.logを使うことが推奨されている
+
+不明（よく知らない関数）
+console.markTimeline
+console.profile
+console.profileEnd
+console.timeStamp

@@ -1,0 +1,37 @@
+取得した結果に複数の値を追加する場合（1レコードに対して2つのレコードを追加する場合）
+SELECT
+	COLUMN_A,
+	COLUMN_B
+FROM
+	(
+		(
+			SELECT
+				COLUMN_A,
+			FROM
+				SCHEMR.TABLE_A
+		)
+	) AS A LEFT JOIN (
+		SELECT
+			COLUMN_B
+		FROM
+			((
+				SELECT
+					'コメント1' AS COLUMN_B
+			) UNION ALL (
+				SELECT
+					'コメント2' AS COLUMN_B
+			)) AS U
+	) AS B ON (A.COLUMN_A IS NOT NULL) /* これを入れないとSQL構文として不正になる */
+;
+
+()を使った複数比較
+SELECT
+	CASE
+		WHEN (COLUMN_A, COLUMN_B) = ('01', '02') THEN '01'
+		ELSE '00'
+	END OUTPUT_COLUMN_1
+FROM
+	SCHEMR.TABLE_A
+WHERE
+	(COLUMN_A, COLUMN_B) = ('01', '02')
+;

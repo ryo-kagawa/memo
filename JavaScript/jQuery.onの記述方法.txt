@@ -1,0 +1,10 @@
+bind
+$(selector).on("event", function(event) {
+	console.log(event.currentTarget)
+});
+
+delegate
+$(baseSelector).on("event", "selector", function(event) {
+	console.log(event.delegateTarget)
+	console.log(event.currentTarget)
+});
