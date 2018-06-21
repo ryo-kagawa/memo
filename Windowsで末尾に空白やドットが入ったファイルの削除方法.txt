@@ -1,0 +1,4 @@
+コマンドプロンプトから以下のコマンドを実行
+DEL "\\?\フルパス"
+例
+DEL "\\?\C:\user\test\Desktop\target_directory\target_file.txt "

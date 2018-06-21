@@ -1,0 +1,11 @@
+一般向け
+Windows 7：IIE11：2020年1月15日
+Windows 8.1：IE11：2023年1月11日
+Windows 10：IE11：2025年10月15日
+
+サーバー向けOS
+Windows Server 2008：IE9：2020年1月15日
+Windows Server 2008 R2：IE11：2020年1月15日
+Windows Server 2012：IE10：2023年1月11日
+Windows Server 2012 R2：IE11：2023年1月11日
+Windows Server 2016：IE11：2027年1月12日
