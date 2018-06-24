@@ -1,0 +1,26 @@
+極論ですが、基本的にJavaScriptでどれだけチェックしようと無意味です
+理由としてはリクエストはいくらでも改ざんできるからです
+プロキシで値を改ざんさせることができます
+取得するJavaScriptを取捨選択することもできます
+ブラウザでF12を押すと開発者用のUIが出てきますが、こいつで値のチェックを上書きするJavaScriptを作成することもできます
+こういうことがいくらでもできてしまうのでクライアント側でのチェックは無意味です
+
+クライアントでのチェックは無意味なのでサーバーでチェックする必要があります
+入力必須で3桁以外は認めないタグです
+<form action="http://example.com">
+	<input type="text" name="test" maxlength="3" minlength="3" require value="123" />
+	<input type="submit" value="サブミット" />
+</form>
+
+これを普通にサブミットすると「test="123"」となります
+ですが、「minlengthかmaxlengthかrequire」を削除すると意図しないパラメータをサーバーに送りつけることができます
+また、以下のようなHTMLファイルをローカルで起動させて意図しないパラメータを送り付けることもできます
+<form action="http://example.com">
+	<input type="text" name="test" maxlength="3" minlength="3" require value="1234567890" />
+	<input type="submit" value="サブミット" />
+</form>
+
+これをサブミットすると「test="1234567890"」となります
+
+
+JavaScriptでチェックを掛けるのはユーザービリティの向上と不正リクエストでのサーバー負荷の軽減です

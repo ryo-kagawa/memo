@@ -1,0 +1,121 @@
+undefinedやらnullやらの判定
+
+比較演算子
+==
+!=
+
+等価比較演算子
+===
+!==
+
+console.log(1 == 1);	//true
+console.log(1 != 1);	//false
+
+console.log(1 == "1");	//true
+console.log(1 != "1");	//false
+
+console.log(1 === "1");	//false
+console.log(1 !== "1");	//true
+
+
+undefinedの比較
+var test = undefined;
+
+console.log(test == "undefined");	//false
+console.log(test != "undefined");	//true
+console.log(test === "undefined");	//false
+console.log(test !== "undefined");	//true
+
+console.log(test == undefined);		//true
+console.log(test != undefined);		//false
+console.log(test === undefined);	//true
+console.log(test !== undefined);	//false
+
+console.log(test == "null");	//false
+console.log(test != "null");	//true
+console.log(test === "null");	//false
+console.log(test !== "null");	//true
+
+console.log(test == null);		//true
+console.log(test != null);		//false
+console.log(test === null);		//false
+console.log(test !== null);		//true
+
+nullとの比較
+var test = null;
+console.log(test == "undefined");	//false
+console.log(test != "undefined");	//true
+console.log(test === "undefined");	//false
+console.log(test !== "undefined");	//true
+
+console.log(test == undefined);		//true
+console.log(test != undefined);		//false
+console.log(test === undefined);	//false
+console.log(test !== undefined);	//true
+
+console.log(test == "null");	//false
+console.log(test != "null");	//true
+console.log(test === "null");	//false
+console.log(test !== "null");	//true
+
+console.log(test == null);		//true
+console.log(test != null);		//false
+console.log(test === null);		//true
+console.log(test !== null);		//false
+
+
+一般的には以下のように書きます
+if(test === null || test === undefined) {
+	//古いブラウザだとundefinedの定義を書き換えることができてしまうので注意（今は定数定義なので書き換え不可）
+}
+if(test === null || typeof test === "undefined") {
+	//こっちだと全てのブラウザでできると思います
+}
+
+
+比較演算子の場合0はfalse、1はtrueとして扱われます
+console.log(0 == false);	//true
+console.log(0 == true);		//false
+console.log(1 == false);	//false
+console.log(1 == true);		//true
+
+比較演算子の場合0、1以外はtrueともfalseとも扱われません
+console.log(2 == false);	//false
+console.log(2 == true);		//false
+console.log(-1 == false);	//false
+console.log(-1 == true);	//false
+console.log(1.1 == false);	//false
+console.log(1.1 == true);	//false
+
+比較演算子の場合文字列は数値として扱われて判定されます（数値として不正な場合はtrueともfalseとも扱われません）
+console.log("" == false);	//true
+console.log("" == true);	//false
+console.log(" " == false);	//true
+console.log(" " == true);	//false
+console.log("1" == false);	//false
+console.log("1" == true);	//true
+console.log("0" == false);	//true
+console.log("0" == true);	//false
+console.log(" 1" == false);	//false
+console.log(" 1" == true);	//true
+console.log("2" == false);	//false
+console.log("2" == true);	//false
+console.log("1 " == false);	//false
+console.log("1 " == true);	//true
+console.log("a" == false);	//false
+console.log("a" == true);	//false
+console.log("1a" == false);	//false
+console.log("1a" == true);	//false
+console.log("a1" == false);	//false
+console.log("a1" == true);	//false
+
+比較演算子の場合オブジェクトはtrueともfalseとも扱われません
+var test = {};
+console.log(a == false);	//false
+console.log(a == true);		//false
+
+比較演算子の場合配列は要素数が1以上であればtrue、1つもなければfalseとして扱われます
+console.log([] == false);	//true
+console.log([] == true);	//false
+console.log([1] == false);	//false
+console.log([1] == true);	//true
