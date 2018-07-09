@@ -1,0 +1,7 @@
+E11：秒間80パケットほどしか捌けない（捌けたパケットから順次処理される）
+Edge17：IE11と同じだが、捌ける量が増えている（秒間100～140パケット）
+Chrome67：秒間600～800パケットほど裁けるが、それ以上に受信した場合一瞬固まった後に全てのパケットの処理が終わる（完全に固まってから最後まで処理されるので全てのパケットの取得が終わるまでJSスレッドを停止してI/O待ちをする？）
+Firefox61：Chromeと全く同じ
+
+このことからIEが対象に含まれている場合には秒間100パケットを基準としてtransportsからwebsocketの記述を削除すべきかもしれない
+io.connect('http://example', {transports: IS_IE || IS_EDGE ? ["xhr-polling", "jsonp-polling"] : ["xhr-polling", "jsonp-polling", "websocket"]});
