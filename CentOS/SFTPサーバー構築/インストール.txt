@@ -1,0 +1,43 @@
+#ユーザー名、ディレクトリ名はSMB側と合わせると楽
+
+#ユーザーの作成
+groupadd sftp_user
+useradd -g sftp_user sftp_user
+
+#鍵の作成
+ssh-keygen -t ecdsa
+
+#ユーザーの場所に配置
+/home/sftp_user/.ssh/id_ecdsa.pub
+
+#権限の設定（AuthorizedKeysFileを644にしないと認証が通らないので644にしている）
+chown -R sftp_user:sftp_user .ssh
+chmod 700 .ssh
+chmod 644 .ssh/id_ecdsa.pub
+
+#ChrootDirectoryの設定
+#ディレクトリの作成
+mkdir /home2/sftp_user
+chown root:sftp_user /home2/sftp_user
+chmod 750 /home2/sftp_user
+
+mkdir /home2/sftp_user/public
+chown sftp_user:sftp_user /home2/sftp_user/public
+chmod 750 /home2/sftp_user/public
+
+#必要なディレクトリをマウント
+mount.cifs -o "username=sftp_user,password=sftp_user,uid=sftp_user,gid=sftp_user" SMB上の対象ディレクトリ /home2/sftp_user/public
+
+#sshd_configをコピー
+gedit /etc/ssh/sshd_config
+
+#firewallの設定変更（使用するポート番号を入力）
+/usr/lib/firewalld/services/ssh.xml
+port=XXXXX
+systemctl restart firewalld
+
+#SELinuxの設定
+semanage port -a -t ssh_port_t -p tcp XXXXX
+
+#ルーターのポート開放
+#静的IPマスカレードでfirewallで設定したポートに対してこのサーバーのIPアドレスへアクセスできるようにする
