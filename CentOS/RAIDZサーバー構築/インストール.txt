@@ -1,62 +1,67 @@
-CentOS7 1611‚Å‚Ìì¬•û–@
+CentOS7 1611ã§ã®ä½œæˆæ–¹æ³•
 
-#•K—v‚Èƒ\ƒtƒgƒEƒFƒA‚ÌƒCƒ“ƒXƒg[ƒ‹
-#EPEL‚ÌƒCƒ“ƒXƒg[ƒ‹
+#å¿…è¦ãªã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+#EPELã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 yum install epel-release
 yum install http://download.zfsonlinux.org/epel/zfs-release.el7_3.noarch.rpm
 yum install zfs
 yum install kernel-devel zfs
 
-#zpool‚ğ”F¯‚³‚¹‚é
+#zpoolã‚’èªè­˜ã•ã›ã‚‹
 /sbin/modprobe zfs
 
-#g—p‚Å‚«‚éƒtƒ@ƒCƒ‹ƒVƒXƒeƒ€‚ÌŠm”Fizfs‚ª‚ ‚ê‚Î‘åä•vj
+#ä½¿ç”¨ã§ãã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ã®ç¢ºèªï¼ˆzfsãŒã‚ã‚Œã°å¤§ä¸ˆå¤«ï¼‰
 cat /proc/filesystems
 
-#RAID\’z
-#4KBƒZƒNƒ^‘Î‰AHDDŒğŠ·Œã‚Ì©“®—e—ÊŠg’£‘Î‰
-#zpool create ƒfƒBƒŒƒNƒgƒŠ–¼ RAID–¼ g—p‚·‚éƒfƒoƒCƒX‚ğƒŠƒXƒg‚Å“ü—Í
+#RAIDæ§‹ç¯‰
+#4KBã‚»ã‚¯ã‚¿å¯¾å¿œã€HDDäº¤æ›å¾Œã®è‡ªå‹•å®¹é‡æ‹¡å¼µå¯¾å¿œ
+#zpool create ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå RAIDå ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒã‚¤ã‚¹ã‚’ãƒªã‚¹ãƒˆã§å…¥åŠ›
 zpool create -o ashift=12 tank raidz3 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1 /dev/sdf1 /dev/sdg1 /dev/sdh1 /dev/sdi1 -f
 zpool set autoexpand=on tank
+zfs set atime=off tank
 
-#samba‚ÌƒCƒ“ƒXƒg[ƒ‹
+#sambaã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 yum install samba
 
-#ƒOƒ‹[ƒv‚Ìì¬
+#ã‚°ãƒ«ãƒ¼ãƒ—ã®ä½œæˆ
 #groupadd file_server_user
 
-#Linuxƒ†[ƒU[‚Ìì¬
+#Linuxãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ä½œæˆ
 #useradd -G file_server_user linux_user
 
-#samba‚Ì‹¤—LƒfƒBƒŒƒNƒgƒŠ‚Ì’Ç‰Á
+#sambaã®å…±æœ‰ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®è¿½åŠ 
 mkdir /tank/public
 chmod 770 /tank/public
 chown :file_server_user /tank/public
 
-#samba‚ÌŒÂlƒfƒBƒŒƒNƒgƒŠ‚Ì’Ç‰Á
+#sambaã®å€‹äººãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®è¿½åŠ 
 mkdir /tank/linux_user
 chown linux_user:linux_user /tank/linux_user
 
-#smb.conf‚ğƒRƒs[
+#smb.confã‚’ã‚³ãƒ”ãƒ¼
 gedit /etc/samba/smb.conf
 
-#samba‚ğ‹N“®
+#sambaã‚’èµ·å‹•
 systemctl start smb
 
-#rootƒ†[ƒU[‚Ìİ’è
+#rootãƒ¦ãƒ¼ã‚¶ãƒ¼ã®è¨­å®š
 pdbedit -a root
 smbpasswd -a root
 
-#Linuxƒ†[ƒU[‚Ìİ’è
+#Linuxãƒ¦ãƒ¼ã‚¶ãƒ¼ã®è¨­å®š
 pdbedit -a linux_user
 
-#SELinux‚ğ–³Œø‚É‚·‚é
+#SELinuxã‚’ç„¡åŠ¹ã«ã™ã‚‹
 setenforce 0
 
-#İ’è‚Ìƒlƒbƒgƒ[ƒN‚©‚çƒ|[ƒg‚ğŒÅ’è‚É‚·‚é
+#è¨­å®šã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‹ã‚‰ãƒãƒ¼ãƒˆã‚’å›ºå®šã«ã™ã‚‹
 
-#ƒtƒ@ƒCƒAƒEƒH[ƒ‹‚Ésamba‚ğ“o˜^‚·‚é
+#ãƒ•ã‚¡ã‚¤ã‚¢ã‚¦ã‚©ãƒ¼ãƒ«ã«sambaã‚’ç™»éŒ²ã™ã‚‹
 firewall-cmd --add-service=samba --zone=public --permanent
 firewall-cmd --reload
 
-#Ä‹N“®‚·‚é
+#SE LinuxãŒæœ‰åŠ¹ã§ã‚‚æ‰±ãˆã‚‹ã‚ˆã†ã«ã™ã‚‹
+setsebool -P samba_enable_home_dirs 1
+chcon -t samba_share_t /tank -R
+
+#å†èµ·å‹•ã™ã‚‹
