@@ -1,0 +1,75 @@
+# DNFのアップデート
+dnf update
+
+# 必要なソフトウェアのインストール
+# EPELのインストール
+dnf install epel-release
+
+# ZFSのインストール
+dnf install http://download.zfsonlinux.org/epel/zfs-release.el8_0.noarch.rpm
+dnf install zfs
+
+# zpoolを認識させる
+/sbin/modprobe zfs
+
+# 使用できるファイルシステムの確認（zfsがあれば大丈夫）
+cat /proc/filesystems | grep zfs
+
+# RAID構築
+# 4KBセクタ対応、HDD交換後の自動容量拡張対応
+# zpool create ディレクトリ名 RAID名 使用するデバイスをリストで入力
+zpool create -o ashift=12 tank raidz3 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1 /dev/sdf1 /dev/sdg1 /dev/sdh1 /dev/sdi1 -f
+zpool set autoexpand=on tank
+zfs set atime=off tank
+
+# Sambaのインストール
+yum install samba
+
+#Sambaを起動
+systemctl start smb
+
+# Sambaを自動起動できるようにする
+systemctl enable smb
+
+# グループの作成
+# groupadd file_server_user
+
+# Linuxユーザーの作成
+# useradd -G file_server_user linux_user
+
+# sambaの共有ディレクトリの追加
+mkdir /tank/public
+chmod 770 /tank/public
+chown :file_server_user /tank/public
+
+# sambaの個人ディレクトリの追加
+mkdir /tank/linux_user
+chown linux_user:linux_user /tank/linux_user
+
+# smb.confをコピー
+gedit /etc/samba/smb.conf
+
+# sambaを起動
+systemctl start smb
+
+# rootユーザーの設定
+pdbedit -a root
+smbpasswd -a root
+
+# Linuxユーザーの設定
+pdbedit -a linux_user
+
+# SELinuxを無効にする
+setenforce 0
+
+# 設定のネットワークからポートを固定にする
+
+# ファイアウォールにsambaを登録する
+firewall-cmd --add-service=samba --zone=public --permanent
+firewall-cmd --reload
+
+# SE Linuxが有効でも扱えるようにする
+setsebool -P samba_enable_home_dirs 1
+chcon -t samba_share_t /tank -R
+
+# 再起動する
