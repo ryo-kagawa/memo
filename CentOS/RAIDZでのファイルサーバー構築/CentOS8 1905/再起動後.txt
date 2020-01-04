@@ -1,0 +1,31 @@
+# 再起動後にzpoolを認識させる
+/sbin/modprobe zfs
+zpool import tank
+
+# zpoolに認識できないとき
+zpool export tank
+zpool import tank
+
+# 状態確認
+zpool status
+
+# zpoolで異常があった場合の修復
+zpool scrub tank
+
+# メンテ
+# 壊れたRAIDの修復
+# zpool replace tank デバイス
+zpool replace tank /dev/sb・・・
+
+# RAID容量追加
+# zpool online -e tank デバイス
+zpool online -e tank /dev/sb・・・
+
+# カーネルアップデートをした場合
+dkms status
+この結果でWARNINGが出ていれば以下実行（X.X.Xはバージョンを入力、4ヶ所ある）
+dkms remove zfs/X.X.X --all; dkms remove spl/X.X.X --all; dkms --force install spl/X.X.X; dkms --force install zfs/X.X.X;
+
+# 直らない場合の最終手段
+dnf erase zfs zfs-dkms libzfs2 spl spl-dkms
+dnf install zfs

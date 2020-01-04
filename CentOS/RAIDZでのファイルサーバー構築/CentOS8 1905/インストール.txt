@@ -22,13 +22,13 @@ zpool create -o ashift=12 tank raidz3 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1 /d
 zpool set autoexpand=on tank
 zfs set atime=off tank
 
-# Sambaのインストール
+# sambaのインストール
 yum install samba
 
-#Sambaを起動
+# sambaを起動
 systemctl start smb
 
-# Sambaを自動起動できるようにする
+# sambaを自動起動できるようにする
 systemctl enable smb
 
 # グループの作成
@@ -38,6 +38,7 @@ systemctl enable smb
 # useradd -G file_server_user linux_user
 
 # sambaの共有ディレクトリの追加
+chmod 755 /tank
 mkdir /tank/public
 chmod 770 /tank/public
 chown :file_server_user /tank/public
@@ -70,6 +71,6 @@ firewall-cmd --reload
 
 # SE Linuxが有効でも扱えるようにする
 setsebool -P samba_enable_home_dirs 1
-chcon -t samba_share_t /tank -R
+chcon -R -t samba_share_t /tank
 
 # 再起動する
