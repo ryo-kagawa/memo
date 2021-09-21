@@ -1,0 +1,9 @@
+# エマージェンシーモードになった場合の対応
+`Entering emergancy mode. `が表示される
+```
+journalctl
+```
+末尾近くに`Failed to mount /sysroot.`とあった場合に次のコマンドを実行することで解決する
+```
+xfs_repair -v -L /dev/dm-0
+```
