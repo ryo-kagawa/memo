@@ -1,0 +1,8 @@
+色相関図で考えた場合に中央付近を通る直線ではなく、曲線となるように指定する
+次の2パターンが簡易的に作成が可能
+・HSLでHだけ変更する形でグラデーションを行う
+・HCLでHだけ変更する形でグラデーションを行う
+
+生成ツール
+https://www.learnui.design/tools/gradient-generator.html
+https://www.joshwcomeau.com/gradient-generator
