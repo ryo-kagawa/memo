@@ -1,0 +1,41 @@
+<style>
+* {
+  background: #000000;
+  * {
+    background: #880000;
+    * {
+      background: #008800;
+      * {
+        background: #000088;
+        * {
+          background: #888800;
+          * {
+            background: #880088;
+            * {
+              background: #008888;
+              * {
+                background: #FF0000;
+                * {
+                  background: #00FF00;
+                  * {
+                    background: #0000FF;
+                    * {
+                      background: #FFFF00;
+                      * {
+                        background: #FF00FF;
+                        * {
+                          background: #00FFFF;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</style>
