@@ -439,6 +439,7 @@
 |Windows Vista|1|1.10.8||
 |Windows 7|1|1.20||
 |Windows 8|1|1.20||
+|Windows 8.1|1|1.20||
 |Windows 10 or above|1|TBD||
 |Windows Server 2003|1|1.10.8||
 |Windows Server 2008|1|1.10.8||
@@ -454,6 +455,7 @@
 |Windows Vista|1|1.10.8||
 |Windows 7|1|1.20||
 |Windows 8|1|1.20||
+|Windows 8.1|1|1.20||
 |Windows 10 or above|1|TBD||
 |Windows Server 2003|1|1.10.8||
 |Windows Server 2008|1|1.10.8||
