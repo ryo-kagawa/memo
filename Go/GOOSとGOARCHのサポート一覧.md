@@ -463,6 +463,12 @@
 |Windows Server 2012|1|1.20||
 |Windows Server 2016 or above|1|TBD||
 
+## windows/arm
+|Distributions|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|Windows 10|1|1.16||
+
+
 ## windows/arm64
 
 |Distributions|Goの最初のサポート|Goの最終のサポート|備考|
