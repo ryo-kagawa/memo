@@ -2,37 +2,37 @@
 
 ## aix/ppc64
 
-|OS|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|AIX|7.2|1.12|TBD||
+|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|7.2 or above|1.12|TBD||
 
 ## android/386
 
-|OS|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|Android|? - 9|1.6|TBD||
-|Android|10 or above|1.13|TBD||
+|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|? - 9|1.6|TBD||
+|10 or above|1.13|TBD||
 
 ## android/amd64
 
-|OS|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|Android|? - 9|?|TBD||
-|Android|10 or above|?|TBD||
+|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|? - 9|?|TBD||
+|10 or above|?|TBD||
 
 ## android/arm
 
-|OS|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|Android|? - 9|1.4|TBD||
-|Android|10 or above|1.13|TBD||
+|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|? - 9|1.4|TBD||
+|10 or above|1.13|TBD||
 
 ## android/arm64
 
-|OS|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|Android|? - 9|?|TBD||
-|Android|10 or above|?|TBD||
+|バージョン|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|? - 9|?|TBD||
+|10 or above|?|TBD||
 
 ## darwin/386
 
@@ -126,54 +126,54 @@
 
 ## freebsd/386
 
-|Kernel Version|OS|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|7|FreeBSD|1|1.1.2||
-|8|FreeBSD|1|1.9.7||
-|9|FreeBSD|1|1.9.7||
-|10|FreeBSD|1.3|1.12.4|1.12.17が最終？|
-|11|FreeBSD|1.7|1.19.x|1.19.13が最終？|
-|12|FreeBSD|1.12|TBD||
-|13|FreeBSD|?|TBD||
-|14 or above|FreeBSD|?|TBD||
+|Kernel Version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|7|1|1.1.2||
+|8|1|1.9.7||
+|9|1|1.9.7||
+|10|1.3|1.12.4|1.12.17が最終？|
+|11|1.7|1.19.x|1.19.13が最終？|
+|12|1.12|TBD||
+|13|?|TBD||
+|14 or above|?|TBD||
 
 ## freebsd/amd64
 
-|Kernel Version|OS|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|7|FreeBSD|1|1.1.2||
-|8|FreeBSD|1|1.9.7||
-|9|FreeBSD|1|1.9.7||
-|10|FreeBSD|1.3|1.12.4|1.12.17が最終？|
-|11|FreeBSD|1.7|1.19.x|1.19.13が最終？|
-|12|FreeBSD|1.12|TBD||
-|13|FreeBSD|?|TBD||
-|14 or above|FreeBSD|?|TBD||
+|Kernel Version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|7|1|1.1.2||
+|8|1|1.9.7||
+|9|1|1.9.7||
+|10|1.3|1.12.4|1.12.17が最終？|
+|11|1.7|1.19.x|1.19.13が最終？|
+|12|1.12|TBD||
+|13|?|TBD||
+|14 or above|?|TBD||
 
 ## freebsd/arm
 
-|Kernel Version|OS|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|10|FreeBSD|1.3|1.12.4|1.12.17が最終？|
-|11|FreeBSD|1.7|1.19.x|1.19.13が最終？|
-|12|FreeBSD|1.12|TBD||
-|13|FreeBSD|?|TBD||
-|14 or above|FreeBSD|?|TBD||
+|Kernel Version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|10|1.3|1.12.4|1.12.17が最終？|
+|11|1.7|1.19.x|1.19.13が最終？|
+|12|1.12|TBD||
+|13|?|TBD||
+|14 or above|?|TBD||
 
 ## freebsd/arm64
 
-|Kernel Version|OS|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|12|FreeBSD|1.14|TBD||
-|13|FreeBSD|1.14|TBD||
-|14|FreeBSD|1.14|TBD||
+|Kernel Version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|12|1.14|TBD||
+|13|1.14|TBD||
+|14|1.14|TBD||
 
 ## freebsd/riscv64
 
-|Kernel Version|OS|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|13|FreeBSD|1.20|TBD||
-|14|FreeBSD|1.20|TBD||
+|Kernel Version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|13|1.20|TBD||
+|14|1.20|TBD||
 
 ## illumos/amd64
 
@@ -283,17 +283,17 @@
 |TBD|POWER6|1.5|1.8||
 |TBD|POWER7|1.5|1.8||
 |TBD|POWER7+|1.5|1.8||
-|? - 2.6.31|POWER8|1.5|1.17||
-|2.6.32 - 3.1|POWER8|1.5|1.23||
-|3.2 or above|POWER8|1.5|TBD||
+|? - 2.6.31|POWER8 or above|1.5|1.17||
+|2.6.32 - 3.1|POWER8 or above|1.5|1.23||
+|3.2 or above|POWER8 or above|1.5|TBD||
 
 ## linux/ppc64le
 
-|Kernel version|CPUアーキテクチャ|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|? - 2.6.31|POWER8|1.5|1.17||
-|2.6.32 - 3.1|POWER8|1.5|1.23||
-|3.2 or above|POWER8|1.5|TBD||
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|? - 2.6.31|POWER8 or above|1.5|1.17||
+|2.6.32 - 3.1|POWER8 or above|1.5|1.23||
+|3.2 or above|POWER8 or above|1.5|TBD||
 
 ## linux/riscv64
 
@@ -467,7 +467,6 @@
 |Distributions|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
 |Windows 10|1|1.16||
-
 
 ## windows/arm64
 
