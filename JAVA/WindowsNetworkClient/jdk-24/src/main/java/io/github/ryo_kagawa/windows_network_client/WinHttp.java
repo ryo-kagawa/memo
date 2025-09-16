@@ -7,7 +7,7 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
 import com.sun.jna.win32.StdCallLibrary;
 
-public interface WinHttp extends StdCallLibrary {
+interface WinHttp extends StdCallLibrary {
 	public static final WinHttp INSTANCE = Native.load("winhttp", WinHttp.class);
 
 	public static final WinDef.DWORD WINHTTP_ACCESS_TYPE_NO_PROXY = new WinDef.DWORD(1); 

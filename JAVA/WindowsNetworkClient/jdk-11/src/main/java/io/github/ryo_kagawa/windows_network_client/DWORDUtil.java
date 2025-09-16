@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import com.sun.jna.platform.win32.WinDef;
 
-public class DWORDUtil {
+class DWORDUtil {
 	private DWORDUtil() {}
 
 	public static class Operator {
