@@ -15,7 +15,7 @@ public class WindowsProxy {
 	private WindowsProxy() {}
 
 	public static Proxy getProxy(String targetUrl) throws Win32Exception {
-		WinHttp.WINHTTP_CURRENT_USER_IE_PROXY_CONFIG.ByReference proxyConfig = new WinHttp.WINHTTP_CURRENT_USER_IE_PROXY_CONFIG.ByReference();
+		var proxyConfig = new WinHttp.WINHTTP_CURRENT_USER_IE_PROXY_CONFIG.ByReference();
 		if (!WinHttp.INSTANCE.WinHttpGetIEProxyConfigForCurrentUser(proxyConfig).booleanValue()) {
 			throw new Win32Exception(Native.getLastError());
 		}
@@ -44,11 +44,11 @@ public class WindowsProxy {
 			throw new Win32Exception(Native.getLastError());
 		}
 		try {
-			WinHttp.WINHTTP_AUTOPROXY_OPTIONS.ByReference autoProxyOptions = new WinHttp.WINHTTP_AUTOPROXY_OPTIONS.ByReference();
+			var autoProxyOptions = new WinHttp.WINHTTP_AUTOPROXY_OPTIONS.ByReference();
 			autoProxyOptions.fAutoLogonIfChallenged = new WinDef.BOOL(true);
 			autoProxyOptions.dwFlags = WinHttp.WINHTTP_AUTOPROXY_AUTO_DETECT;
 			autoProxyOptions.dwAutoDetectFlags = DWORDUtil.Operator.or(WinHttp.WINHTTP_AUTO_DETECT_TYPE_DHCP, WinHttp.WINHTTP_AUTO_DETECT_TYPE_DNS_A);
-			WinHttp.WINHTTP_PROXY_INFO.ByReference proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference();
+			var proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference();
 			if (!WinHttp.INSTANCE.WinHttpGetProxyForUrl(hSession, new WTypes.LPWSTR(targetUrl), autoProxyOptions, proxyInfo).booleanValue()) {
 				throw new Win32Exception(Native.getLastError());
 			}
@@ -64,11 +64,11 @@ public class WindowsProxy {
 			throw new Win32Exception(Native.getLastError());
 		}
 		try {
-			WinHttp.WINHTTP_AUTOPROXY_OPTIONS.ByReference autoProxyOptions = new WinHttp.WINHTTP_AUTOPROXY_OPTIONS.ByReference();
+			var autoProxyOptions = new WinHttp.WINHTTP_AUTOPROXY_OPTIONS.ByReference();
 			autoProxyOptions.fAutoLogonIfChallenged = new WinDef.BOOL(true);
 			autoProxyOptions.dwFlags = WinHttp.WINHTTP_AUTOPROXY_CONFIG_URL;
 			autoProxyOptions.lpszAutoConfigUrl = proxyConfig.lpszAutoConfigUrl;
-			WinHttp.WINHTTP_PROXY_INFO.ByReference proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference();
+			var proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference();
 			if (!WinHttp.INSTANCE.WinHttpGetProxyForUrl(hSession, new WTypes.LPWSTR(targetUrl), autoProxyOptions, proxyInfo).booleanValue()) {
 				throw new Win32Exception(Native.getLastError());
 			}

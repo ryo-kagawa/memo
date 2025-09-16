@@ -15,11 +15,11 @@ public class WindowsSSLContext {
 	private WindowsSSLContext() {}
 
 	public static SSLContext createSSLContext() throws KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException, KeyManagementException{
-		KeyStore keyStore = KeyStore.getInstance("Windows-ROOT");
+		var keyStore = KeyStore.getInstance("Windows-ROOT");
 		keyStore.load(null, null);
-		TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+		var trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		trustManagerFactory.init(keyStore);
-		SSLContext sslContext = SSLContext.getInstance("TLS");
+		var sslContext = SSLContext.getInstance("TLS");
 		sslContext.init(null, trustManagerFactory.getTrustManagers(), new SecureRandom());
 		return sslContext;
 	}
