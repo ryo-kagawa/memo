@@ -12,6 +12,8 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
 
 public class WindowsProxy {
+	private WindowsProxy() {}
+
 	public static Proxy getProxy(String targetUrl) throws Win32Exception {
 		WinHttp.WINHTTP_CURRENT_USER_IE_PROXY_CONFIG.ByReference proxyConfig = new WinHttp.WINHTTP_CURRENT_USER_IE_PROXY_CONFIG.ByReference();
 		if (!WinHttp.INSTANCE.WinHttpGetIEProxyConfigForCurrentUser(proxyConfig).booleanValue()) {

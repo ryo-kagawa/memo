@@ -12,6 +12,8 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 
 public class WindowsSSLContext {
+	private WindowsSSLContext() {}
+
 	public static SSLContext createSSLContext() throws KeyStoreException, NoSuchAlgorithmException, CertificateException, IOException, KeyManagementException{
 		KeyStore keyStore = KeyStore.getInstance("Windows-ROOT");
 		keyStore.load(null, null);
