@@ -7,6 +7,7 @@ import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
 import com.sun.jna.win32.StdCallLibrary;
 
+@SuppressWarnings("exports")
 interface WinHttp extends StdCallLibrary {
 	public static final WinHttp INSTANCE = Native.load("winhttp", WinHttp.class);
 

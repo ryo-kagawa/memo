@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.sun.jna.platform.win32.WinDef;
 
+@SuppressWarnings("exports")
 class DWORDUtil {
 	private DWORDUtil() {}
 

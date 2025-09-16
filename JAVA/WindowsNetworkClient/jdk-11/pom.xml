@@ -13,12 +13,12 @@
   <dependencies>
     <dependency>
       <groupId>net.java.dev.jna</groupId>
-      <artifactId>jna</artifactId>
+      <artifactId>jna-jpms</artifactId>
       <version>5.17.0</version>
     </dependency>
     <dependency>
       <groupId>net.java.dev.jna</groupId>
-      <artifactId>jna-platform</artifactId>
+      <artifactId>jna-platform-jpms</artifactId>
       <version>5.17.0</version>
     </dependency>
   </dependencies>
