@@ -86,11 +86,14 @@ public class WindowsProxy {
 		if (proxy.equals(Proxy.NO_PROXY)) {
 			return proxy;
 		}
-		return Optional.ofNullable(proxyConfig.lpszProxyBypass).map((lpszProxyBypass) -> lpszProxyBypass.getValue()).filter((lpszProxyBypass) -> !lpszProxyBypass.isEmpty()).filter((lpszProxyBypass) -> !Arrays.stream(lpszProxyBypass.split(";")).map(String::trim).anyMatch((bypass) -> {
+		if (Optional.ofNullable(proxyConfig.lpszProxyBypass).map((lpszProxyBypass) -> lpszProxyBypass.getValue()).filter((lpszProxyBypass) -> !lpszProxyBypass.isEmpty()).filter((lpszProxyBypass) -> !Arrays.stream(lpszProxyBypass.split(";")).map(String::trim).anyMatch((bypass) -> {
 			if (bypass.equalsIgnoreCase("<local>") && !targetUrl.contains(".")) {
 				return true;
 			}
 			return targetUrl.matches(bypass.replace(".", "\\.").replace("*", ".*"));
-		})).map((x) -> proxy).orElse(Proxy.NO_PROXY);
+		})).isPresent()) {
+			return proxy;
+		}
+		return Proxy.NO_PROXY;
 	}
 }
