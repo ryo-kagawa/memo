@@ -11,6 +11,9 @@ import com.sun.jna.platform.win32.Win32Exception;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
 
+import io.github.ryo_kagawa.windows_network_client.win32.DWORDUtil;
+import io.github.ryo_kagawa.windows_network_client.win32.WinHttp;
+
 public class WindowsProxy {
 	private WindowsProxy() {}
 

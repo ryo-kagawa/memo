@@ -7,13 +7,17 @@
 
 ## 使用方法
 
-### JDK 8
+### JDK 8+
 
 ```java
 HttpsURLConnection connection = (HttpsURLConnection) new URL("https://example.com").openConnection(WindowsProxy.getProxy());
 connection.setSSLSocketFactory(WindowsSSLContext.createSSLContext().getSocketFactory());
 ```
 
-### JDK 11
+### JDK 11+
 
-後で書く
+```
+var httpClient = HttpClient.newBuilder().proxy(new WindowsProxySelector()).sslContext(WindowsSSLContext.createSSLContext().getSocketFactory()).build();
+var request = HttpRequest.newBuilder().uri(new URI("https://example.com")).GET().build();
+var response = client.send(request, HttpResponse.BodyHandlers.ofString()));
+```
