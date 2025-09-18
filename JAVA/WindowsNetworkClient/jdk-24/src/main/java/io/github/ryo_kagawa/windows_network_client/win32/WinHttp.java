@@ -1,7 +1,10 @@
 package io.github.ryo_kagawa.windows_network_client.win32;
 
+import java.util.Optional;
+
 import com.sun.jna.Native;
 import com.sun.jna.Structure;
+import com.sun.jna.platform.win32.Kernel32;
 import com.sun.jna.platform.win32.WTypes;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinNT;
@@ -48,7 +51,14 @@ public interface WinHttp extends StdCallLibrary {
 	 */
 	@Structure.FieldOrder({"fAutoDetect", "lpszAutoConfigUrl", "lpszProxy", "lpszProxyBypass"})
 	public static class WINHTTP_CURRENT_USER_IE_PROXY_CONFIG extends Structure {
-		public static class ByReference extends WINHTTP_CURRENT_USER_IE_PROXY_CONFIG implements Structure.ByReference {}
+		public static class ByReference extends WINHTTP_CURRENT_USER_IE_PROXY_CONFIG implements Structure.ByReference, AutoCloseable {
+			@Override
+			public void close() {
+				Optional.ofNullable(lpszAutoConfigUrl).ifPresent((lpszAutoConfigUrl) -> Kernel32.INSTANCE.GlobalFree(lpszAutoConfigUrl.getPointer()));
+				Optional.ofNullable(lpszProxy).ifPresent((lpszProxy) -> Kernel32.INSTANCE.GlobalFree(lpszProxy.getPointer()));
+				Optional.ofNullable(lpszProxyBypass).ifPresent((lpszProxyBypass) -> Kernel32.INSTANCE.GlobalFree(lpszProxyBypass.getPointer()));
+			}
+		}
 
 		public WinDef.BOOL fAutoDetect;
 		public WTypes.LPWSTR lpszAutoConfigUrl;
@@ -65,7 +75,13 @@ public interface WinHttp extends StdCallLibrary {
 	 */
 	@Structure.FieldOrder({"dwAccessType", "lpszProxy", "lpszProxyBypass"})
 	public static class WINHTTP_PROXY_INFO extends Structure {
-	    public static class ByReference extends WINHTTP_PROXY_INFO implements Structure.ByReference {}
+	    public static class ByReference extends WINHTTP_PROXY_INFO implements Structure.ByReference, AutoCloseable {
+			@Override
+			public void close() {
+				Optional.ofNullable(lpszProxy).ifPresent((lpszProxy) -> Kernel32.INSTANCE.GlobalFree(lpszProxy.getPointer()));
+				Optional.ofNullable(lpszProxyBypass).ifPresent((lpszProxyBypass) -> Kernel32.INSTANCE.GlobalFree(lpszProxyBypass.getPointer()));
+			}
+	    }
 
 	    public WinDef.DWORD dwAccessType;
 	    public WTypes.LPWSTR lpszProxy;

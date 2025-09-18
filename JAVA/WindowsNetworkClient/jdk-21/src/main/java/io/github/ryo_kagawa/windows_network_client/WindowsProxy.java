@@ -18,18 +18,19 @@ public class WindowsProxy {
 	private WindowsProxy() {}
 
 	public static Proxy getProxy(String targetUrl) throws Win32Exception {
-		var proxyConfig = new WinHttp.WINHTTP_CURRENT_USER_IE_PROXY_CONFIG.ByReference();
-		if (!WinHttp.INSTANCE.WinHttpGetIEProxyConfigForCurrentUser(proxyConfig).booleanValue()) {
-			throw new Win32Exception(Native.getLastError());
-		}
-		if (proxyConfig.fAutoDetect.booleanValue()) {
-			return wpad(targetUrl);
-		}
-		if (Optional.ofNullable(proxyConfig.lpszAutoConfigUrl.getValue()).isPresent()) {
-			return pac(targetUrl, proxyConfig);
-		}
-		if (Optional.ofNullable(proxyConfig.lpszProxy.getValue()).isPresent()) {
-			return manual(targetUrl, proxyConfig);
+		try (var proxyConfig = new WinHttp.WINHTTP_CURRENT_USER_IE_PROXY_CONFIG.ByReference()) {
+			if (!WinHttp.INSTANCE.WinHttpGetIEProxyConfigForCurrentUser(proxyConfig).booleanValue()) {
+				throw new Win32Exception(Native.getLastError());
+			}
+			if (proxyConfig.fAutoDetect.booleanValue()) {
+				return wpad(targetUrl);
+			}
+			if (Optional.ofNullable(proxyConfig.lpszAutoConfigUrl.getValue()).isPresent()) {
+				return pac(targetUrl, proxyConfig);
+			}
+			if (Optional.ofNullable(proxyConfig.lpszProxy.getValue()).isPresent()) {
+				return manual(targetUrl, proxyConfig);
+			}
 		}
 		return Proxy.NO_PROXY;
 	}
@@ -51,11 +52,12 @@ public class WindowsProxy {
 			autoProxyOptions.fAutoLogonIfChallenged = new WinDef.BOOL(true);
 			autoProxyOptions.dwFlags = WinHttp.WINHTTP_AUTOPROXY_AUTO_DETECT;
 			autoProxyOptions.dwAutoDetectFlags = DWORDUtil.Operator.or(WinHttp.WINHTTP_AUTO_DETECT_TYPE_DHCP, WinHttp.WINHTTP_AUTO_DETECT_TYPE_DNS_A);
-			var proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference();
-			if (!WinHttp.INSTANCE.WinHttpGetProxyForUrl(hSession, new WTypes.LPWSTR(targetUrl), autoProxyOptions, proxyInfo).booleanValue()) {
-				throw new Win32Exception(Native.getLastError());
+			try (var proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference()) {
+				if (!WinHttp.INSTANCE.WinHttpGetProxyForUrl(hSession, new WTypes.LPWSTR(targetUrl), autoProxyOptions, proxyInfo).booleanValue()) {
+					throw new Win32Exception(Native.getLastError());
+				}
+				return Optional.ofNullable(proxyInfo.lpszProxy).map((lpszProxy) -> lpszProxy.getValue()).filter((lpszProxy) -> !lpszProxy.isEmpty()).map((lpszProxy) -> parseProxy(lpszProxy)).orElse(Proxy.NO_PROXY);
 			}
-			return Optional.ofNullable(proxyInfo.lpszProxy).map((lpszProxy) -> lpszProxy.getValue()).filter((lpszProxy) -> !lpszProxy.isEmpty()).map((lpszProxy) -> parseProxy(lpszProxy)).orElse(Proxy.NO_PROXY);
 		} finally {
 			WinHttp.INSTANCE.WinHttpCloseHandle(hSession);
 		}
@@ -71,11 +73,12 @@ public class WindowsProxy {
 			autoProxyOptions.fAutoLogonIfChallenged = new WinDef.BOOL(true);
 			autoProxyOptions.dwFlags = WinHttp.WINHTTP_AUTOPROXY_CONFIG_URL;
 			autoProxyOptions.lpszAutoConfigUrl = proxyConfig.lpszAutoConfigUrl;
-			var proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference();
-			if (!WinHttp.INSTANCE.WinHttpGetProxyForUrl(hSession, new WTypes.LPWSTR(targetUrl), autoProxyOptions, proxyInfo).booleanValue()) {
-				throw new Win32Exception(Native.getLastError());
+			try (var proxyInfo = new WinHttp.WINHTTP_PROXY_INFO.ByReference()) {
+				if (!WinHttp.INSTANCE.WinHttpGetProxyForUrl(hSession, new WTypes.LPWSTR(targetUrl), autoProxyOptions, proxyInfo).booleanValue()) {
+					throw new Win32Exception(Native.getLastError());
+				}
+				return Optional.ofNullable(proxyInfo.lpszProxy).map((lpszProxy) -> lpszProxy.getValue()).filter((lpszProxy) -> !lpszProxy.isEmpty()).map((lpszProxy) -> parseProxy(lpszProxy)).orElse(Proxy.NO_PROXY);
 			}
-			return Optional.ofNullable(proxyInfo.lpszProxy).map((lpszProxy) -> lpszProxy.getValue()).filter((lpszProxy) -> !lpszProxy.isEmpty()).map((lpszProxy) -> parseProxy(lpszProxy)).orElse(Proxy.NO_PROXY);
 		} finally {
 			WinHttp.INSTANCE.WinHttpCloseHandle(hSession);
 		}
