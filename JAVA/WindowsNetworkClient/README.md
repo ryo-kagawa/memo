@@ -16,7 +16,7 @@ connection.setSSLSocketFactory(WindowsSSLContext.createSSLContext().getSocketFac
 
 ### JDK 11+
 
-```
+```java
 var httpClient = HttpClient.newBuilder().proxy(new WindowsProxySelector()).sslContext(WindowsSSLContext.createSSLContext().getSocketFactory()).build();
 var request = HttpRequest.newBuilder().uri(new URI("https://example.com")).GET().build();
 var response = client.send(request, HttpResponse.BodyHandlers.ofString()));
