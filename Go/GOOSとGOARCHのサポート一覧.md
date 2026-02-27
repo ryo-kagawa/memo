@@ -214,19 +214,19 @@
 
 ## linux/386
 
-|Kernel version|CPUアーキテクチャ|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|2.3.26 - 2.6.31|386|1|1.17||
-|2.6.32 - 3.1|386|1|1.23||
-|3.2 or above|386|1|TBD||
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.3.26 - 2.6.31|1|1.17||
+|2.6.32 - 3.1|1|1.23||
+|3.2 or above|1|TBD||
 
 ## linux/amd64
 
-|Kernel version|CPUアーキテクチャ|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|2.3.26 - 2.6.31|amd64|1|1.17||
-|2.6.32 - 3.1|amd64|1|1.23||
-|3.2 or above|amd64|1|TBD||
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.3.26 - 2.6.31|1|1.17||
+|2.6.32 - 3.1|1|1.23||
+|3.2 or above|1|TBD||
 
 ## linux/arm
 
@@ -249,21 +249,21 @@
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
 |2.6.32 - 3.1|1.1|1.8||
-|3.2 or above|1.1|TDB||
+|3.2 or above|1.1|TBD||
 
 ### ARMv6K
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
 |3.1|1.1|1.8||
-|3.2 or above|1.1|TDB||
+|3.2 or above|1.1|TBD||
 
 ### ARMv7
 
 |Kernel version|CPUアーキテクチャ|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|-|
 |2.6.32 - 3.1|1.1|1.8||
-|3.2 or above|1.1|TDB||
+|3.2 or above|1.1|TBD||
 
 ## linux/arm64
 
@@ -281,13 +281,13 @@
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
-|TBD|1.8|TBD||
+|3.9 or above|1.8|TBD||
 
 ## linux/mips64
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
-|TBD|1.6|TBD||
+|3.9 or above|1.6|TBD||
 
 ## linux/mips64le
 
@@ -299,41 +299,71 @@
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
-|TBD|1.8|TBD||
+|3.9 or above|1.8|TBD||
 
 ## linux/ppc64
 
-|Kernel version|CPUアーキテクチャ|Goの最初のサポート|Goの最終のサポート|備考|
-|-|-|-|-|-|
-|TBD|POWER5|1.5|1.8||
-|TBD|POWER6|1.5|1.8||
-|TBD|POWER7|1.5|1.8||
-|TBD|POWER7+|1.5|1.8||
-|? - 2.6.31|POWER8 or above|1.5|1.17||
-|2.6.32 - 3.1|POWER8 or above|1.5|1.23||
-|3.2 or above|POWER8 or above|1.5|TBD||
-
-## linux/ppc64le
+### POWER5
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
-|? - 2.6.31|POWER8 or above|1.5|1.17||
-|2.6.32 - 3.1|POWER8 or above|1.5|1.23||
-|3.2 or above|POWER8 or above|1.5|TBD||
+|2.6.32 - 2.6.38|1.5|1.8||
+
+### POWER6
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.6.32 - 5.19|1.5|1.8||
+
+### POWER7
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.6.32 or above|1.5|1.8||
+
+### POWER7+
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.6.32 or above|1.5|1.8||
+
+## linux/ppc64le
+
+### POWER8
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.6.32 - 3.1|1.5|1.23||
+|3.2 or above|1.5|TBD||
+
+### POWER9
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|4.14 or above|1.11|TBD||
+
+### POWER10
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|5.14 or above|1.17|TBD||
+
+### Power11
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|6.1 or above|1.21|TBD||
 
 ## linux/riscv64
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
-|? - 2.6.31|1.14|1.17||
-|2.6.32 - 3.1|1.14|1.23||
-|3.2 or above|1.14|TBD||
+|5.4 or above|1.14|TBD||
 
 ## linux/s390x
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
-|? - 2.6.31|1.7|1.17||
 |2.6.32 - 3.1|1.7|1.23||
 |3.2 or above|1.7|TBD||
 
