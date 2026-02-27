@@ -63,7 +63,7 @@
 |18|macOS Mojave 10.14|1.12|1.20||
 |19|macOS Catalina 10.15|1.12|1.22||
 |20|macOS Big Sur 11|1.12|1.24||
-|21|macOS Monterey 12|1.12|TBD||
+|21|macOS Monterey 12|1.12|1.26||
 |22|macOS Ventura 13|1.12|TBD||
 |23|macOS Sonoma 14|1.12|TBD||
 |24|macOS Sequoia 15|1.12|TBD||
@@ -91,7 +91,7 @@
 |Kernel Version|Distributions|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|-|
 |20|macOS Big Sur 11|1.16|1.24||
-|21|macOS Monterey 12|1.16|TBD||
+|21|macOS Monterey 12|1.16|1.26||
 |22|macOS Ventura 13|1.16|TBD||
 |23|macOS Sonoma 14|1.16|TBD||
 |24|macOS Sequoia 15|1.16|TBD||
