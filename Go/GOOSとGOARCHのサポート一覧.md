@@ -230,14 +230,40 @@
 
 ## linux/arm
 
+### ARMv5
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.6.32 - 3.1|1.1|1.8||
+|3.2 or above|1.1|TBD||
+
+### ARMv5E
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|3.1|1.1|1.8||
+|3.2 or above|1.1|TBD||
+
+### ARMv6
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|2.6.32 - 3.1|1.1|1.8||
+|3.2 or above|1.1|TDB||
+
+### ARMv6K
+
+|Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
+|-|-|-|-|
+|3.1|1.1|1.8||
+|3.2 or above|1.1|TDB||
+
+### ARMv7
+
 |Kernel version|CPUアーキテクチャ|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|-|
-|3.1 or above|ARMv5E|1.1|1.8||
-|3.1 or above|ARMv6|1.1|1.8||
-|3.1|ARMv6K|1.1|1.23||
-|3.1|arm|1.1|1.23||
-|3.2 or above|ARMv6K|1.1|TBD||
-|3.2 or above|arm|1.1|TBD||
+|2.6.32 - 3.1|1.1|1.8||
+|3.2 or above|1.1|TDB||
 
 ## linux/arm64
 
