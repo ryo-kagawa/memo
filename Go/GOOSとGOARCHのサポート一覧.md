@@ -243,7 +243,7 @@
 
 |Kernel version|Goの最初のサポート|Goの最終のサポート|備考|
 |-|-|-|-|
-|TBD|1.5|TBD||
+|3.10 or above|1.5|TBD||
 
 ## linux/loong64
 
