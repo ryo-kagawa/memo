@@ -42,7 +42,7 @@
 |-|-|-|-|-|
 |10|Mac OS X Snow Leopard 10.6|1|1.4.3||
 |11|OS X Lion 10.7|1|1.7.6||
-|12|OS X Montain Lion 10.8|1|1.10.8||
+|12|OS X Mountain Lion 10.8|1|1.10.8||
 |13|OS X Mavericks 10.9|1|1.10.8||
 |14|OS X Yosemite 10.10|1|1.12|||
 |15|OS X El Capitan 10.11|1|1.14||
@@ -485,7 +485,7 @@
 |-|-|-|-|-|
 |10|Mac OS X Snow Leopard 10.6|1|1.4.3||
 |11|OS X Lion 10.7|1|1.7.6||
-|12|OS X Montain Lion 10.8|1|1.10.8||
+|12|OS X Mountain Lion 10.8|1|1.10.8||
 |13|OS X Mavericks 10.9|1|1.10.8||
 |14|OS X Yosemite 10.10|1|1.12|||
 |15|OS X El Capitan 10.11|1|1.14||
