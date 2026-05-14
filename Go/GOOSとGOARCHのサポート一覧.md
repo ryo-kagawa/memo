@@ -67,6 +67,7 @@
 |22|macOS Ventura 13|1.12|TBD||
 |23|macOS Sonoma 14|1.12|TBD||
 |24|macOS Sequoia 15|1.12|TBD||
+|25|macOS Tahoe 26|1.12|TBD||
 |16|iOS 10|1.7.1|1.18|iOS Simulator用|
 |17|iOS 11|1.7.1|1.18|iOS Simulator用|
 |18|iOS 12|1.12|TBD|iOS Simulator用|
@@ -95,6 +96,7 @@
 |22|macOS Ventura 13|1.16|TBD||
 |23|macOS Sonoma 14|1.16|TBD||
 |24|macOS Sequoia 15|1.16|TBD||
+|25|macOS Tahoe 26|1.16|TBD||
 |14|iOS 7|1.5|TBD||
 |14|iOS 8|1.5|TBD||
 |15|iOS 9|1.5|TBD||
